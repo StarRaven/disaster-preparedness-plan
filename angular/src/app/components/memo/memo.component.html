@@ -1,0 +1,24 @@
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let memo of memos">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{memo.title}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="memo-content">
+          {{memo.content}}
+        </div>
+        <br>
+        <br>
+        <button mat-raised-button color="accent" (click)="update(memo)">Update</button>
+        <button mat-raised-button color="accent" (click)="delete(memo)">Delete</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</mat-sidenav-container>

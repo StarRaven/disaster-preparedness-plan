@@ -1,0 +1,176 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+body {
+  margin: 0 !important;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.mat-sidenav {
+  background: #1d1c1c !important;
+}
+
+.mat-row {
+  background: #363535;
+  border-bottom-color: transparent;
+}
+
+.mat-header-row {
+  background: #363535;
+  border-bottom-color: transparent;
+}
+
+.mat-cell {
+  color: #b0afaf;
+  font-size: 16px;
+}
+
+.mat-header-cell {
+  color: #b0afaf;
+  font-size: 16px;
+}
+
+.form-title {
+  margin-top: 20px;
+  padding: 0 30px;
+  color: #b0afaf;
+  font-size: 30px;
+}
+
+.title-wrapper {
+  margin: 20px 0;
+  color: #b0afaf;
+  font-size: 30px;
+}
+
+.mat-drawer-container {
+  min-height: 984px;
+  height: 100%;
+  background: #363535;
+}
+
+.content-wrapper {
+  background: #363535;
+  padding: 100px;
+}
+
+.content {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #b0afaf;
+  height: 100%;
+}
+
+.left-wrapper {
+  width: 750px;
+  height: 60%;
+  float: left;
+}
+
+.right-wrapper {
+  padding-left: 100px;
+  overflow: auto;
+}
+
+.right-sidebar-button {
+  line-height: 65px;
+  display: block;
+  border: none;
+  background: none;
+  color: #b0afaf;
+  font-size: 25px;
+}
+
+.right-title {
+  padding-top: 20px;
+  color: #b0afaf;
+  font-size: 30px;
+}
+
+.mat-primary {
+  color: #ffffff;
+}
+
+button {
+  cursor: pointer;
+}
+
+.mat-form-field-placeholder {
+  color: #b0afaf !important;
+}
+
+.mat-focused {
+  color: #b0afaf;
+}
+
+.mat-form-field-underline {
+  background-color: #b0afaf;
+}
+
+.mat-form-field-ripple {
+  background-color: #b0afaf;
+}
+
+.mat-radio-label {
+  color: #b0afaf;
+}
+
+.mat-radio-outer-circle {
+  border-color: #b0afaf;
+}
+
+.mat-primary {
+  color: #b0afaf;
+}
+
+.mat-select-value {
+  color: #b0afaf;
+}
+
+.mat-select-arrow {
+  color: #b0afaf !important;
+}
+
+.mat-checkbox-frame {
+  border-color: #b0afaf;
+}
+
+.below-operations {
+  clear: both;
+  float: right;
+  padding: 100px;
+}
+
+.below-single-operation {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.input-qty {
+  background: transparent;
+  border: none;
+  color: #b0afaf;
+  font-size: 16px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 26px;
+}
+
+.mat-expansion-panel-content {
+  font-size: 22px !important;
+  line-height: 25px !important;
+}
+
+.mat-tooltip {
+  font-size: 14px !important;
+}
+
+.mat-expansion-panel {
+  padding: 10px;
+}

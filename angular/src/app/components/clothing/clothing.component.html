@@ -1,0 +1,48 @@
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <div class="left-wrapper">
+      <div class="title-wrapper">
+        Weather
+      </div>
+      <div class="content">
+        <div style="width: 700px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=76747" width="700" height="520" frameborder="0" scrolling="no"></iframe><a style="height: 20px;text-indent: -9999em;z-index: 1;display: block;position: relative;margin: -20px 0 0 0"
+            href="https://www.willyweather.com/pa/allegheny-county/pittsburgh.html" rel="nofollow">pittsburgh weather</a></div>
+      </div>
+    </div>
+    <div class="right-wrapper">
+      <div class="title-wrapper">
+        Clothing & Bedding
+      </div>
+      <mat-table #table1 [dataSource]="dataSource">
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <input class="input-qty" type="number" min='0' max='99' [(ngModel)]="element.quantity" (change)="update(element.id,element.quantity)" width="30px">
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <br>
+    </div>
+    <div class="cb-tips-content">
+      Tips:
+      <ul>
+        <li>
+          You need to input your city location manually, and then the widget will show you the weather information about the city.
+        </li>
+        <li>
+          It contains the weather condition for the following week. (Not the date you selected in the home page)
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-sidenav-container>

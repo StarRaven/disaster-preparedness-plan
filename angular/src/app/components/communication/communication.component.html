@@ -1,0 +1,69 @@
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <div class="left-wrapper">
+      <div class="title-wrapper">
+        <div *ngIf="current_title==''">Communication</div>
+        <div *ngIf="current_title!=''">{{current_title}}</div>
+      </div>
+      <div class="form-wrapper">
+        <form [formGroup]="add_communication" (ngSubmit)="CommunicationAdd()">
+          <div class="content">
+            <br>
+            <br>
+            <div>
+              <mat-form-field class="half">
+                <input matInput formControlName="firstname" placeholder="Enter your first name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="half">
+                <input matInput formControlName="lastname" placeholder="Enter your last name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="phone" placeholder="Enter your phone number" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="email" placeholder="Enter your E-mail" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="( add_communication.dirty && add_communication.valid )" class="form-submit">
+              <button *ngIf="current_title==''" type="submit" class="form-button ok" matTooltip="Add communication"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="form-button update" matTooltip="Update communication"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="form-button delete" matTooltip="Delete communication"></button>
+              <button type="button" (click)="reset()" class="form-button reset" matTooltip="Reset the form"></button>
+            </div>
+            <div *ngIf="( !add_communication.dirty || !add_communication.valid )" class="form-submit">
+              <button *ngIf="current_title==''" type="button" class="form-button ok-dark" matTooltip="Please fill out the form!"></button>
+              <button *ngIf="current_title!=''" type="button" class="form-button update-dark" matTooltip="Please fill out the form!"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="form-button delete" matTooltip="Delete communication"></button>
+              <button type="button" (click)="reset()" class="form-button reset" matTooltip="Reset the form"></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="right-wrapper">
+      <div class="right-title">Communication Lists</div>
+      <br>
+      <br>
+      <button *ngFor="let communication of communications" [ngClass]="(communication.id==current_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="select(communication)" matTooltip="Select to update communication">
+        <img class="select-member" src="/assets/images/Arrow.png"/>
+        {{ communication.firstname }} {{communication.lastname}}
+      </button>
+      <button class="right-sidebar-button" (click)="addnew()" matTooltip="Add new communication">
+        <img class="select-member" src="/assets/images/Add.png"/>
+        New Communication
+      </button>
+    </div>
+  </div>
+</mat-sidenav-container>

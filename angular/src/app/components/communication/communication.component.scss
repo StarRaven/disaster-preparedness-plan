@@ -1,0 +1,69 @@
+.half {
+  width: 40%;
+  padding-right: 50px;
+}
+
+.whole {
+  width: 40%;
+  display: block;
+  padding-right: 50px;
+}
+
+.form-submit {
+  display: block;
+  padding: 50px 0;
+}
+
+.form-wrapper {
+  width: 750px;
+  float: left;
+}
+
+.mat-form-field {
+  margin: 30px 0;
+}
+
+.form-button {
+  background-repeat: no-repeat;
+  width: 96px;
+  height: 40px;
+  border: none;
+  margin-right: 13px;
+}
+
+.ok {
+  background: url("/assets/images/Save.png");
+}
+
+.ok-dark {
+  background: url("/assets/images/Save_Dark.png");
+}
+
+.update {
+  background: url("/assets/images/Update.png");
+}
+
+.update-dark {
+  background: url("/assets/images/Update_Dark.png");
+}
+
+.delete {
+  background: url("/assets/images/Delete.png");
+}
+
+.reset {
+  background: url("/assets/images/Clear.png");
+}
+
+.right-sidebar-button-selected {
+  line-height: 65px;
+  display: block;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.select-member {
+  margin-bottom: -4px;
+}
