@@ -135,8 +135,8 @@ const childRoutes: Routes = [
       { path: 'login', component: LoginComponent },
       
       { path: 'info', component: FrameComponent, children: childRoutes},
-      
-      { path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
+      { path: 'home', component: HomeComponent },
+      //{ path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
     ])
   ],
   entryComponents: [

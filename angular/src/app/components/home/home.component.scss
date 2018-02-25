@@ -1,35 +1,63 @@
-.home-content {
-  background-image: url("/assets/images/cover.png");
-  background-color: #000000;
+.index-bg {
+  background: url("/assets/images/index-background.png");
   background-size: cover;
-  width: 100%;
-  height: 800px;
-  display: flex;
-  align-items: center;
+  height: 100vh;
+}
+
+.book-wrapper {
+  background: url("/assets/images/book.png");
+  width: 858px;
+  height: 745px;
+}
+
+.book {
+  margin-top: 190px;
+}
+
+.logo {
+  margin-top: 270px;
+}
+
+.fix-book {
+  margin-left: -232px;
+}
+
+.fix-logo {
   width: 100%;
 }
 
-.home-form-wrapper {
-  width: 100%;
+.index-left {
   text-align: center;
-  margin-bottom: 200px;
 }
 
-.home-form {
-  padding: 0 10px;
-}
-
-.home-form-button-wrapper {
-  height: 50px;
+.form-wrapper {
+  height: 350px;
+  width: 376px;
   position: relative;
-  top: 12px;
-  display: inline-block;
+  left: 231px;
+  top: 99px;
 }
 
-.home-form-button {
-  background: url("/assets/images/Search.png");
-  background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
-  border: none;
+.inner-form {
+  padding-top: 30px;
+  margin-left:28px;
+  width:320px;
+}
+
+.form-input {
+  width:100%;
+}
+
+::ng-deep .mat-tab-label, .mat-tab-link {
+    color:  #4A1500 !important;
+    font-size: 18px;
+    width: 160px;
+} 
+
+.center {
+  text-align:center;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: hidden !important;
 }
