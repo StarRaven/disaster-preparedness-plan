@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AuthService {
 
-  private BASE_URL = 'http://localhost:5000/auth';
+  private BASE_URL = 'http://localhost:5000';
   private headers: Headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) {}
   login(user): Promise<any> {

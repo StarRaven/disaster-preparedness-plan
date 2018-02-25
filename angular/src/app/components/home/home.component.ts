@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  login_form: FormGroup;
   disaster_date: FormGroup;
   start: Date;
   end: Date;
@@ -19,9 +22,15 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private global: GlobalService,
+    private http: Http,
     public snackBar: MatSnackBar,
     private auth: AuthService,
   ) {
+    this.login_form = new FormGroup({
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
+    });
+
     this.disaster_date = new FormGroup({
       disaster: new FormControl(null, [Validators.required]),
       startdate: new FormControl(null, [Validators.required]),
@@ -29,8 +38,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  Login(): void {
+    let body = JSON.stringify({ username: this.login_form.get('username').value, password: this.login_form.get('password').value });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    this.http.post('/api/login', body, { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        if (jsonDataBody.status) {
+          localStorage.setItem('id', jsonDataBody.id);
+          localStorage.setItem('username', jsonDataBody.username);
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+  }
+
   ngOnInit() {
+    
+    /*
     let sampleUser: any = {
+      email: 'admin@admin.com' as string,
       username: 'admin' as string,
       password: 'admin' as string
     };
@@ -47,6 +77,7 @@ export class HomeComponent implements OnInit {
     .catch((err) => {
       console.log(err);
     });
+    */
   }
 
   checkLogin(): boolean {

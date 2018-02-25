@@ -17,8 +17,9 @@ export class TravelComponent implements OnInit {
     private global: GlobalService,
   ) { }
 
-  add(tip){
-    let body = JSON.stringify({ userid: this.global.id, traveltipid: tip.id });
+  add(tip) {
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, traveltipid: tip.id });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/add/travel', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -34,8 +35,9 @@ export class TravelComponent implements OnInit {
     );
   }
 
-  delete(tip){
-    let body = JSON.stringify({ userid: this.global.id, traveltipid: tip.id });
+  delete(tip) {
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, traveltipid: tip.id });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/delete/travel', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -75,8 +77,8 @@ export class TravelComponent implements OnInit {
         };
         console.log(this.traveltips);
         let headers = new Headers({ 'Content-Type': 'application/json' });
-
-        this.http.get('/api/get/travel/' + this.global.id, { headers: headers }).subscribe(
+        const lsid = localStorage.getItem('id');
+        this.http.get('/api/get/travel/' + lsid, { headers: headers }).subscribe(
           (jsonData) => {
             let jsonDataBody = jsonData.json();
             for (let entry of jsonDataBody) {

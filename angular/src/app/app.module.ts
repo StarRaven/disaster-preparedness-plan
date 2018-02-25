@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -52,7 +52,27 @@ import { AuthorityComponent } from './components/authority/authority.component';
 import { ProtectdlgComponent } from './components/protectdlg/protectdlg.component';
 import { UpdatememoComponent } from './components/updatememo/updatememo.component';
 import { OverallComponent } from './components/overall/overall.component';
+import { BasicinfoComponent } from './components/basicinfo/basicinfo.component';
 
+import { EnsureAuthenticatedService } from './services/ensure-authenticated.service';
+import { LoginRedirectService } from './services/login-redirect.service';
+import { FrameComponent } from './components/frame/frame.component';
+
+const childRoutes: Routes = [
+  //{ path: '', redirectTo: 'family', pathMatch: 'full' },
+  //{ path: 'basic', component: BasicinfoComponent, canActivate: [EnsureAuthenticatedService] },
+  { path: 'basic', component: BasicinfoComponent },
+  { path: 'family', component: FamilyComponent },
+  { path: 'clothing', component: ClothingComponent },
+  { path: 'water', component: WaterComponent },
+  { path: 'food', component: FoodComponent },
+  { path: 'travel', component: TravelComponent },
+  { path: 'communication', component: CommunicationComponent },
+  { path: 'storage', component: StorageComponent },
+  { path: 'tips', component: TipsComponent },
+  { path: 'memo', component: MemoComponent },
+  { path: 'authority', component: AuthorityComponent },
+];
 
 @NgModule({
   declarations: [
@@ -74,7 +94,9 @@ import { OverallComponent } from './components/overall/overall.component';
     AuthorityComponent,
     ProtectdlgComponent,
     UpdatememoComponent,
-    OverallComponent
+    OverallComponent,
+    BasicinfoComponent,
+    FrameComponent
   ],
   imports: [
     BrowserModule,
@@ -111,17 +133,10 @@ import { OverallComponent } from './components/overall/overall.component';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'overall', component: OverallComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'family', component: FamilyComponent },
-      { path: 'clothing', component: ClothingComponent },
-      { path: 'water', component: WaterComponent },
-      { path: 'food', component: FoodComponent },
-      { path: 'travel', component: TravelComponent },
-      { path: 'communication', component: CommunicationComponent },
-      { path: 'storage', component: StorageComponent },
-      { path: 'tips', component: TipsComponent },
-      { path: 'memo', component: MemoComponent },
-      { path: 'authority', component: AuthorityComponent },
-      { path: 'home', component: HomeComponent },
+      
+      { path: 'info', component: FrameComponent, children: childRoutes},
+      
+      { path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
     ])
   ],
   entryComponents: [
@@ -133,6 +148,8 @@ import { OverallComponent } from './components/overall/overall.component';
   providers: [
     AuthService,
     GlobalService,
+    EnsureAuthenticatedService,
+    LoginRedirectService
   ],
   bootstrap: [AppComponent]
 })

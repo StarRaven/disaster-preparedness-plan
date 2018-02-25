@@ -21,7 +21,8 @@ export class ClothingComponent implements OnInit {
   ) { }
 
   update(id, qty) {
-    let body = JSON.stringify({ userid: this.global.id, clothingbeddingid: id, quantity: qty });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, clothingbeddingid: id, quantity: qty });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/update/userclothingbedding', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -53,8 +54,8 @@ export class ClothingComponent implements OnInit {
           this.clothings.push(r);
         };
         let headers = new Headers({ 'Content-Type': 'application/json' });
-
-        this.http.get('/api/get/clothingbedding/' + this.global.id, { headers: headers }).subscribe(
+        const lsid = localStorage.getItem('id');
+        this.http.get('/api/get/clothingbedding/' + lsid, { headers: headers }).subscribe(
           (jsonData) => {
             let jsonDataBody = jsonData.json();
             for (let entry of jsonDataBody) {

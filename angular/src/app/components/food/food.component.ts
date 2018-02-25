@@ -3,7 +3,8 @@ import { Headers, Http } from '@angular/http';
 import { MatTableDataSource } from '@angular/material';
 import { Food } from '../../food';
 import { GlobalService } from '../../global.service';
-import Chart from 'chart.js';
+
+import * as Chart from 'chart.js';
 
 @Component({
   selector: 'app-food',
@@ -32,7 +33,8 @@ export class FoodComponent implements OnInit {
   ) { }
 
   update(id, qty) {
-    let body = JSON.stringify({ userid: this.global.id, foodid: id, quantity: qty });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, foodid: id, quantity: qty });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/update/userfood', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -148,8 +150,8 @@ export class FoodComponent implements OnInit {
         };
         //console.log(this.foods);
         let headers = new Headers({ 'Content-Type': 'application/json' });
-
-        this.http.get('/api/get/food/' + this.global.id, { headers: headers }).subscribe(
+        const lsid = localStorage.getItem('id');
+        this.http.get('/api/get/food/' + lsid, { headers: headers }).subscribe(
           (jsonData) => {
             let jsonDataBody = jsonData.json();
             for (let entry of jsonDataBody) {

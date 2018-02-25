@@ -3,9 +3,10 @@ import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
-import Chart from 'chart.js';
 import { Human } from '../../human';
 import { Pet } from '../../pet';
+
+import * as Chart from 'chart.js';
 
 @Component({
   selector: 'app-water',
