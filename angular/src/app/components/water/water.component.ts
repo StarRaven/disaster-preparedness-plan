@@ -70,7 +70,8 @@ export class WaterComponent implements OnInit {
 
   getpets(): void {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    this.http.get('/api/get/pet', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.http.get('/api/get/pet/' + lsid, { headers: headers }).subscribe(
       (jsonData) => {
         this.pets = [];
         let jsonDataBody = jsonData.json();
@@ -93,10 +94,11 @@ export class WaterComponent implements OnInit {
       () => this.updatechart()
     );
   }
+  
   getAllMembers(): void {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-
-    this.http.get('/api/get/human', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.http.get('/api/get/human' + lsid, { headers: headers }).subscribe(
       (jsonData) => {
         this.humans = [];
         let jsonDataBody = jsonData.json();
