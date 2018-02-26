@@ -5,3 +5,16 @@
 .nottoggled {
     text-decoration:line-through;
 }
+
+.inner-print {
+    padding: 50px;
+}
+
+table {
+    border-collapse:collapse;
+}
+table, th, td { 
+    padding-left: 10px;
+    border: 2px solid #8B2E00; 
+    color: #8B2E00;
+}

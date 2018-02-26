@@ -14,11 +14,65 @@
 <div class="label l9 toggle" [ngClass]="{'nottoggled': !show[8]}" (click)='toggle(8)'>Emergency Authorities</div>
 <div class="label l10 toggle" [ngClass]="{'nottoggled': !show[9]}" (click)='toggle(9)'>Communication</div>
 <div class="label l11 toggle" [ngClass]="{'nottoggled': !show[10]}" (click)='toggle(10)'>Tips</div>
-<div *ngIf="show[10]">
+<div *ngIf="show[10]" class="inner-print">
+  <table style="width:100%">
+    
+      <tr><td width="25%" rowspan="8">Water</td><td width="75%">Clean containers</td></tr>
+            <tr><td width="75%">Original containers (purchase commercially)</td></tr>
+            <tr><td width="75%">Ten drops CL per gallon, stand for 30-60 minutes, boil for 1 min</td></tr>
+            <tr><td width="75%">Reuse water for sanitation purposes</td></tr>
+            <tr><td width="75%">Treat rain water and ground water</td></tr>
+            <tr><td width="75%">Cool before drinking</td></tr>
+            <tr><td width="75%">Store water prepared filtering only for 6 months</td></tr>
+            <tr><td width="75%">Distilling to make saltwater become drinkable</td></tr>
 
+            <tr><td width="25%" rowspan="4">Food</td><td width="75%">Keep fresh</td></tr>
+            <tr><td width="75%">Kept in sealed air tight containers</td></tr>
+            <tr><td width="75%">Easily prepared</td></tr>
+            <tr><td width="75%">Expiration date</td></tr>
+
+            <tr><td width="25%" rowspan="4">Clothing & Bedding</td><td width="75%">Always include warm clothing</td></tr>
+            <tr><td width="75%">Sleeping bags & mats suited to the weather</td></tr>
+            <tr><td width="75%">Use padded ground pads for both comfort and warmth</td></tr>
+            <tr><td width="75%">Jackets for 3 days for each person</td></tr>
+
+            <tr><td width="25%" rowspan="13">First Aid and Medications</td><td width="75%">Special needs households should consider additional items</td></tr>
+            <tr><td width="75%">Latex gloves</td></tr>
+            <tr><td width="75%">Sterile dressings with tape and bandages</td></tr>
+            <tr><td width="75%">Cleansing agents</td></tr>
+            <tr><td width="75%">Antibiotic ointment</td></tr>
+            <tr><td width="75%">Eye wash</td></tr>
+            <tr><td width="75%">Thermometer</td></tr>
+            <tr><td width="75%">Splinting supplies</td></tr>
+            <tr><td width="75%">Scissors and tweezers</td></tr>
+            <tr><td width="75%">Aspirin or non-aspirin pain relievers</td></tr>
+            <tr><td width="75%">Antacids</td></tr>
+            <tr><td width="75%">Anti-diarrheals</td></tr>
+            <tr><td width="75%">Benadryl</td></tr>
+
+            <tr><td width="25%" rowspan="14">Miscellaneous Items</td><td width="75%">Flash lights with extra batteries</td></tr>
+            <tr><td width="75%">Tools, a wrench or pliers, along with a hammer and screwdrivers</td></tr>
+            <tr><td width="75%">Camp knife</td></tr>
+            <tr><td width="75%">Matches in a waterproof container</td></tr>
+            <tr><td width="75%">Small mirror for signaling or other uses</td></tr>
+            <tr><td width="75%">Whistle to signal for help</td></tr>
+            <tr><td width="75%">Moist towelettes</td></tr>
+            <tr><td width="75%">Garbage bags and buckets (for sanitation, toileting needs, and other uses)</td></tr>
+            <tr><td width="75%">Personal hygiene items</td></tr>
+            <tr><td width="75%">Household bleach</td></tr>
+            <tr><td width="75%">Copies of important personal and family papers</td></tr>
+            <tr><td width="75%">Cash</td></tr>
+            <tr><td width="75%">Paper & pencil</td></tr>
+            <tr><td width="75%">Favorite books, games, or puzzles for all member of the household</td></tr>
+
+            <tr><td width="25%" rowspan="2">Storage</td><td width="75%">Cool, dry, protected place</td></tr>
+            <tr><td width="75%">Easy access in an emergency</td></tr>
+
+            <tr><td width="25%" rowspan="1">Jump Bag</td><td width="75%">Prepare an evacuation duffle bag or backpack</td></tr>
+      </table>
 </div>
 <div class="label l12 toggle" [ngClass]="{'nottoggled': !show[11]}" (click)='toggle(11)'>Memo</div>
-<div *ngIf="show[11]">
+<div *ngIf="show[11]" class="inner-print">
   <mat-table #table1 [dataSource]="dataSourceMemo">
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
