@@ -10,5 +10,10 @@
     <mat-error>This field is required</mat-error>
   </mat-form-field>
   <br>
-  <button mat-raised-button color="accent" type="submit" [disabled]="( !memo_form.dirty || !memo_form.valid )">Add</button>
+  <div *ngIf="!( !memo_form.dirty || !memo_form.valid )" class="form-submit">
+      <button type="submit" class="form-button" matTooltip="Add information">Add</button>
+    </div>
+    <div *ngIf="( !memo_form.dirty || !memo_form.valid )" class="form-submit">
+      <button type="button" class="form-button disabled" matTooltip="Please fill out the form!">Add</button>
+    </div>
 </form>

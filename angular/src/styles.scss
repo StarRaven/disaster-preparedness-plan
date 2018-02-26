@@ -1,11 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@font-face {
+  font-family: Lato-Regular;
+  src: url('/assets/fonts/Lato/Lato-Regular.ttf'); 
+}
 
 body {
   margin: 0 !important;
-  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-family: Lato-Regular,Roboto,"Helvetica Neue",sans-serif;
 }
 
+.mat-radio-button {
+  font-family: Lato-Regular,Roboto,"Helvetica Neue",sans-serif;
+}
 .mat-sidenav {
   background: #1d1c1c !important;
 }
@@ -76,6 +83,15 @@ body {
   font-size: 25px;
 }
 
+.right-sidebar-button-selected {
+  line-height: 65px;
+  display: block;
+  border: none;
+  background: none;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.5), -1px -1px 1px rgba(255,255,255,.5);
+  font-size: 25px;
+}
 .right-title {
   padding-top: 20px;
   color: #8B2E00;
@@ -138,6 +154,9 @@ button {
   background-color: #8B2E00;
 }
 
+.mat-hint {
+  color: red;
+}
 .mat-checkbox-checkmark-path {
   stroke: #ffffff!important; 
 }
@@ -184,6 +203,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .mat-tooltip {
   font-size: 14px !important;
+  background-color: #8B2E00 !important;
 }
 
 .mat-expansion-panel {
@@ -219,6 +239,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 19px;
     background-repeat: no-repeat;
   background-size: 230px 50px;
+  text-shadow: black 1px 1px 2px;
 }
 
 .l1 {
@@ -278,7 +299,17 @@ input[type=number]::-webkit-outer-spin-button {
   border: none;
   margin-right: 13px;
   color: #8B2E00;
+  text-shadow: -1px -1px 1px rgba(0,0,0,.5), 1px 1px 1px rgba(255,255,255,.5);
   font-size: 20px;
+}
+
+.form-button:active {
+  background: url("/assets/images/bt2-2.png");
+  background-repeat: no-repeat;
+  background-size: 100px 50px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.5), -1px -1px 1px rgba(255,255,255,.5);
+  width: 100px;
+  height: 50px;
 }
 
 .disabled {
@@ -287,5 +318,32 @@ input[type=number]::-webkit-outer-spin-button {
   background-size: 100px 50px;
   width: 100px;
   height: 50px;
+  text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
   cursor: not-allowed;
+}
+
+.mat-select-content, .mat-select-panel-done-animating {
+  background: #4c1600;
+}
+
+.mat-dialog-title {
+  color: #8B2E00 !important;
+}
+
+.custom-dialog .mat-dialog-container {
+  background-image: url(/assets/images/paper.png) !important;
+  color: #8B2E00 !important;
+}
+
+.half {
+  width: 45%;
+  padding-right: 4%;
+  margin:15px 0;
+}
+
+.whole {
+  width: 45%;
+  padding-right: 4%;
+  display: block;
+  margin:15px 0;
 }

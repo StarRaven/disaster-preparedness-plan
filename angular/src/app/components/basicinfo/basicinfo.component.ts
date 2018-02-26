@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BasicService } from '../../services/basic.service';
+import { GlobalService } from '../../global.service';
 import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
@@ -19,7 +20,8 @@ export class BasicinfoComponent implements OnInit {
     private http: Http,
     public dialog: MatDialog,
     private basic: BasicService,
-    private router: Router
+    private router: Router,
+    private global: GlobalService
   ) {
     this.basic_form = new FormGroup({
       location: new FormControl(null, [Validators.required]),
@@ -32,6 +34,7 @@ export class BasicinfoComponent implements OnInit {
   }
 
   BasicUpdate() {
+    this.global.exist = true;
     const updateBasic: any = {
       userid: localStorage.getItem('id'),
       location: this.basic_form.get('location').value,
@@ -41,8 +44,7 @@ export class BasicinfoComponent implements OnInit {
     if (this.exist) {
       this.basic.update(updateBasic).subscribe(
         (jsonData) => {
-          const jsonDataBody = jsonData.json();
-          if (jsonDataBody.status) {
+          if (jsonData.status) {
             this.router.navigate(['info/print']);
           }
         },
@@ -54,8 +56,7 @@ export class BasicinfoComponent implements OnInit {
     } else {
       this.basic.add(updateBasic).subscribe(
         (jsonData) => {
-          const jsonDataBody = jsonData.json();
-          if (jsonDataBody.status) {
+          if (jsonData.status) {
             this.router.navigate(['info/family']);
           }
         },

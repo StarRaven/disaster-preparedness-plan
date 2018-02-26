@@ -108,14 +108,8 @@ export class TravelComponent implements OnInit {
     );
   }
 
-  getUserTravelTips(): void {
-
-  }
-
   ngOnInit() {
     this.getAllTravelTips();
-    this.getUserTravelTips()
-
   }
 
 }

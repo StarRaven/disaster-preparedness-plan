@@ -4,6 +4,8 @@ from flask import json
 from flask import Response
 from flask import jsonify
 from flaskext.mysql import MySQL
+from werkzeug.security import generate_password_hash
+from werkzeug.security import check_password_hash
 from datetime import datetime
 
 mysql = MySQL()
@@ -42,7 +44,7 @@ def api_login():
         password = json_to_python['password']
 
         cursor = mysql.connect().cursor()
-        cursor.execute("SELECT * from users where username='" + username + "' and password='" + password + "'")
+        cursor.execute("SELECT * from users where username='" + username + "'")
         data = cursor.fetchone()
         print data
         if data is None:
@@ -51,12 +53,19 @@ def api_login():
             }
             return jsonify(t)
         else:
-            t = {
-                'status' : True,
-                'id' : data[0],
-                'username': data[1]
-            }
-            return jsonify(t)
+            password2 = data[2]
+            if check_password_hash(password2, password):
+                t = {
+                    'status' : True,
+                    'id' : data[0],
+                    'username': data[1]
+                }
+                return jsonify(t)
+            else:
+                t = {
+                'status' : False
+                }
+                return jsonify(t)
     else:
         return "Data type is wrong"
 
@@ -67,7 +76,7 @@ def api_register():
         print json_to_python
         username = json_to_python['username']
         password = json_to_python['password']
-
+        password = generate_password_hash(password)
         db = mysql.connect()
         cursor1 = db.cursor()
         cursor1.execute("INSERT INTO users (username, password) VALUES ('"+str(username)+"', '"+str(password)+"')")

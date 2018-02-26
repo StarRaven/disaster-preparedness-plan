@@ -1,8 +1,11 @@
 <div class="label l3">Family Members</div>
 <div class="wrapper" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center" fxLayoutGap="0" fxLayoutGap.xs="0">
   <div class="left-wrapper" fxFlexOrder="2" fxFlexOrder.gt-sm="1" fxFlex="60">
+      <div class="title-wrapper">
+          <div *ngIf="current_title==''">Add Family Member</div>
+          <div *ngIf="current_title!=''">{{current_title}}</div>
+        </div>
     <form [formGroup]="add_family_member" (ngSubmit)="FamilyMemberAdd()">
-        <br>
         <br>
         <mat-radio-group formControlName="kind" style="text-align:left" required>
           <mat-radio-button value="human" name="human" class="half">Human</mat-radio-button>

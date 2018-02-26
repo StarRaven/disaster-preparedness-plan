@@ -30,8 +30,8 @@ export class AddmemoComponent implements OnInit {
       title: this.memo_form.get('title').value,
       content: this.memo_form.get('content').value,
     };
-
-    let body = JSON.stringify({ userid: this.global.id, title: samplememo.title, content: samplememo.content });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, title: samplememo.title, content: samplememo.content });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/add/memo', body, { headers: headers }).subscribe(
       (jsonData) => {

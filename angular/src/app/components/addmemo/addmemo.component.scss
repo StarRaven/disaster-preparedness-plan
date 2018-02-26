@@ -5,3 +5,7 @@
 .addmemo-form {
   text-align: center;
 }
+
+::ng-deep .mat-dialog-container {
+  background-image: url(/assets/images/paper.png);
+}

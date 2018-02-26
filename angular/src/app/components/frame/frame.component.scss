@@ -10,6 +10,7 @@
   font-size: 1.7em;
   font-weight: bold;
   margin: 0px 0px 4px 16px;
+  text-shadow: black 2px 2px 4px;
 }
 
 .sidebar {
@@ -36,8 +37,13 @@
   text-align: center;
   display: block;
   cursor: pointer;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.5), -1px -1px 1px rgba(255,255,255,.5);
 }
 
+.sidebar-nav:active {
+  background-image: url(/assets/images/sidebar-bt-pressed.png);
+  text-shadow: -1px -1px 1px rgba(0,0,0,.5), 1px 1px 1px rgba(255,255,255,.5);
+}
 .nav-text {
   margin: auto;
   position: absolute;
@@ -54,10 +60,13 @@
 }
 
 .active {
-  background-image: url(/assets/images/sidebar-bt-pressed.png);
   cursor: not-allowed;
 }
 
+.active a{
+  color: white;
+  text-shadow: -1px -1px 1px rgba(0,0,0,.5), 1px 1px 1px rgba(255,255,255,.5);
+}
 .container {
   background-color: white;
 }
@@ -97,6 +106,19 @@
 }
 
 .operations {
-  width:100px;
-  float:right;
+  position: absolute;
+  right: 30px;
+}
+
+.big-icon {
+  font-size:32px;
+}
+
+.disabled-menu {
+  background-image: url(/assets/images/sidebar-bt-disabled.png);
+  cursor: not-allowed;
+}
+
+.disabled-menu a{
+  text-shadow: 0 0;
 }

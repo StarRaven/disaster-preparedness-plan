@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProtectdlgComponent } from '../protectdlg/protectdlg.component';
@@ -82,8 +81,8 @@ export class FamilyComponent implements OnInit {
       phone: this.add_family_member.get('phone').value,
       health: this.add_family_member.get('health').value,
     };
-
-    let body = JSON.stringify({ userid: this.global.id, firstname: registerHuman.firstname, lastname: registerHuman.lastname, gender: registerHuman.gender, birthdate: registerHuman.birthdate, phone: registerHuman.phone, health: registerHuman.health });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, firstname: registerHuman.firstname, lastname: registerHuman.lastname, gender: registerHuman.gender, birthdate: registerHuman.birthdate, phone: registerHuman.phone, health: registerHuman.health });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/add/human', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -106,8 +105,8 @@ export class FamilyComponent implements OnInit {
       pettype: this.add_family_member.get('pettype').value,
       weight: this.add_family_member.get('weight').value,
     };
-
-    let body = JSON.stringify({ userid: this.global.id, petname: registerPet.petname, pettype: registerPet.pettype, weight: registerPet.weight });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, petname: registerPet.petname, pettype: registerPet.pettype, weight: registerPet.weight });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/add/pet', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -268,6 +267,7 @@ export class FamilyComponent implements OnInit {
 
   delete() {
     let dialogRef = this.dialog.open(ProtectdlgComponent, {
+      panelClass: 'custom-dialog',
       width: '250px',
       data: 'Are you sure you want to delete this family member\'s information?'
     });

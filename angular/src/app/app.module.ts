@@ -33,11 +33,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { GlobalService } from './global.service';
-import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { FamilyComponent } from './components/family/family.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HeaderComponent } from './components/header/header.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
 import { WaterComponent } from './components/water/water.component';
 import { HomeComponent } from './components/home/home.component';
@@ -87,10 +85,8 @@ const childRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     FamilyComponent,
     SidebarComponent,
-    HeaderComponent,
     ClothingComponent,
     WaterComponent,
     HomeComponent,
@@ -143,9 +139,8 @@ const childRoutes: Routes = [
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'overall', component: OverallComponent },
-      { path: 'login', component: LoginComponent },
       { path: 'info', component: FrameComponent, children: childRoutes},
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
       //{ path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
     ])
   ],
@@ -153,7 +148,6 @@ const childRoutes: Routes = [
     AddmemoComponent,
     UpdatememoComponent,
     ProtectdlgComponent,
-    LoginComponent,
   ],
   providers: [
     AuthService,

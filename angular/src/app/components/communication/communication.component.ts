@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProtectdlgComponent } from '../protectdlg/protectdlg.component';
@@ -40,8 +39,8 @@ export class CommunicationComponent implements OnInit {
       phone: this.add_communication.get('phone').value,
       email: this.add_communication.get('email').value,
     };
-
-    let body = JSON.stringify({ userid: this.global.id, firstname: sampleCommunication.firstname, lastname: sampleCommunication.lastname, phone: sampleCommunication.phone, email: sampleCommunication.email });
+    const lsid = localStorage.getItem('id');
+    let body = JSON.stringify({ userid: lsid, firstname: sampleCommunication.firstname, lastname: sampleCommunication.lastname, phone: sampleCommunication.phone, email: sampleCommunication.email });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/add/communication', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -91,6 +90,7 @@ export class CommunicationComponent implements OnInit {
       return;
 
     let dialogRef = this.dialog.open(ProtectdlgComponent, {
+      panelClass: 'custom-dialog',
       width: '250px',
       data: 'Are you sure you want to delete this communication?'
     });

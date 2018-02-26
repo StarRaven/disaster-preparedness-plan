@@ -24,6 +24,7 @@ export class MemoComponent implements OnInit {
 
   delete(memo) {
     let dialogRef = this.dialog.open(ProtectdlgComponent, {
+      panelClass: 'custom-dialog',
       width: '250px',
       data: 'Are you sure you want to delete this memo?'
     });
@@ -50,6 +51,7 @@ export class MemoComponent implements OnInit {
 
   update(memo) {
     let dialogRef = this.dialog.open(UpdatememoComponent, {
+      panelClass: 'custom-dialog',
       width: '529px',
       data: memo
     });

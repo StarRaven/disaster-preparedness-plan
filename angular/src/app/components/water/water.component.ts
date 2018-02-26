@@ -1,5 +1,4 @@
 import { ViewChild, Component, ElementRef, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
