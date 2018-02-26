@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
 import { Communication } from '../../communication';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-communication',
@@ -22,6 +23,7 @@ export class CommunicationComponent implements OnInit {
     public global: GlobalService,
     private http: Http,
     public dialog: MatDialog,
+    private communicationS: CommunicationService
   ) {
     this.add_communication = new FormGroup({
       firstname: new FormControl(null, [Validators.required]),
@@ -139,9 +141,8 @@ export class CommunicationComponent implements OnInit {
   }
 
   getAllCommunications() {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-
-    this.http.get('/api/get/communication', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.communicationS.get(lsid).subscribe(
       (jsonData) => {
         this.communications = [];
         let jsonDataBody = jsonData.json();

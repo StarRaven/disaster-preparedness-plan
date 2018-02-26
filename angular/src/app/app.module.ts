@@ -54,9 +54,18 @@ import { UpdatememoComponent } from './components/updatememo/updatememo.componen
 import { OverallComponent } from './components/overall/overall.component';
 import { BasicinfoComponent } from './components/basicinfo/basicinfo.component';
 
+import { PrintComponent } from './components/print/print.component';
+
 import { EnsureAuthenticatedService } from './services/ensure-authenticated.service';
 import { LoginRedirectService } from './services/login-redirect.service';
 import { FrameComponent } from './components/frame/frame.component';
+import { BasicService } from './services/basic.service';
+import { HumanService } from './services/human.service';
+import { PetService } from './services/pet.service';
+import { ClothingService } from './services/clothing.service';
+import { TravelService } from './services/travel.service';
+import { CommunicationService } from './services/communication.service';
+import { MemoService } from './services/memo.service';
 
 const childRoutes: Routes = [
   //{ path: '', redirectTo: 'family', pathMatch: 'full' },
@@ -72,6 +81,7 @@ const childRoutes: Routes = [
   { path: 'tips', component: TipsComponent },
   { path: 'memo', component: MemoComponent },
   { path: 'authority', component: AuthorityComponent },
+  { path: 'print', component: PrintComponent },
 ];
 
 @NgModule({
@@ -96,7 +106,8 @@ const childRoutes: Routes = [
     UpdatememoComponent,
     OverallComponent,
     BasicinfoComponent,
-    FrameComponent
+    FrameComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +144,6 @@ const childRoutes: Routes = [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'overall', component: OverallComponent },
       { path: 'login', component: LoginComponent },
-      
       { path: 'info', component: FrameComponent, children: childRoutes},
       { path: 'home', component: HomeComponent },
       //{ path: 'home', component: HomeComponent, canActivate: [LoginRedirectService] },
@@ -149,7 +159,14 @@ const childRoutes: Routes = [
     AuthService,
     GlobalService,
     EnsureAuthenticatedService,
-    LoginRedirectService
+    LoginRedirectService,
+    BasicService,
+    HumanService,
+    PetService,
+    ClothingService,
+    TravelService,
+    CommunicationService,
+    MemoService
   ],
   bootstrap: [AppComponent]
 })

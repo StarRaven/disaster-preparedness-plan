@@ -1,0 +1,34 @@
+<div class="label l2 toggle" [ngClass]="{'nottoggled': !show[1]}" (click)='toggle(1)'>Basic Information</div>
+<div *ngIf="show[1]">
+
+</div>
+<div class="label l3 toggle" [ngClass]="{'nottoggled': !show[2]}" (click)='toggle(2)'>Family Members</div>
+<div *ngIf="show[2]">
+
+</div>
+<div class="label l4 toggle" [ngClass]="{'nottoggled': !show[3]}" (click)='toggle(3)'>Water</div>
+<div class="label l5 toggle" [ngClass]="{'nottoggled': !show[4]}" (click)='toggle(4)'>Food</div>
+<div class="label l6 toggle" [ngClass]="{'nottoggled': !show[5]}" (click)='toggle(5)'>Clothing & Bedding</div>
+<div class="label l7 toggle" [ngClass]="{'nottoggled': !show[6]}" (click)='toggle(6)'>Storage</div>
+<div class="label l8 toggle" [ngClass]="{'nottoggled': !show[7]}" (click)='toggle(7)'>Travel & Office</div>
+<div class="label l9 toggle" [ngClass]="{'nottoggled': !show[8]}" (click)='toggle(8)'>Emergency Authorities</div>
+<div class="label l10 toggle" [ngClass]="{'nottoggled': !show[9]}" (click)='toggle(9)'>Communication</div>
+<div class="label l11 toggle" [ngClass]="{'nottoggled': !show[10]}" (click)='toggle(10)'>Tips</div>
+<div *ngIf="show[10]">
+
+</div>
+<div class="label l12 toggle" [ngClass]="{'nottoggled': !show[11]}" (click)='toggle(11)'>Memo</div>
+<div *ngIf="show[11]">
+  <mat-table #table1 [dataSource]="dataSourceMemo">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="content">
+      <mat-header-cell *matHeaderCellDef> Content </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.content}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumnsMemo"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnsMemo;"></mat-row>
+  </mat-table>
+</div>

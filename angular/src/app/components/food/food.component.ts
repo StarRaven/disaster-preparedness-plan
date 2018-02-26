@@ -2,7 +2,10 @@ import { ViewChild, Component, ElementRef, OnInit } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { MatTableDataSource } from '@angular/material';
 import { Food } from '../../food';
-import { GlobalService } from '../../global.service';
+import { HumanService } from '../../services/human.service';
+import { PetService } from '../../services/pet.service';
+import { BasicService } from '../../services/basic.service';
+import 'rxjs/add/operator/map';
 
 import * as Chart from 'chart.js';
 
@@ -25,11 +28,15 @@ export class FoodComponent implements OnInit {
   pet: number;
   need: number;
 
+  days: number;
+
   chart: any;
 
   constructor(
     private http: Http,
-    private global: GlobalService,
+    private humanS: HumanService,
+    private petS: PetService,
+    private basic: BasicService
   ) { }
 
   update(id, qty) {
@@ -74,9 +81,8 @@ export class FoodComponent implements OnInit {
   cal_need() {
     this.need = 0;
     this.pet = 0;
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-
-    this.http.get('/api/get/human', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.humanS.get(lsid).subscribe(
       (jsonData) => {
         let jsonDataBody = jsonData.json();
         for (let entry of jsonDataBody) {
@@ -85,7 +91,7 @@ export class FoodComponent implements OnInit {
           else if (entry[4] == 'female')
             this.need = this.need + 2000;
         };
-        this.need = this.need * this.global.days;
+        this.need = this.need * this.days;
       },
       // The 2nd callback handles errors.
       (err) => console.error(err),
@@ -93,13 +99,13 @@ export class FoodComponent implements OnInit {
       () => console.log("observable complete")
     );
 
-    this.http.get('/api/get/pet', { headers: headers }).subscribe(
+    this.petS.get(lsid).subscribe(
       (jsonData) => {
         let jsonDataBody = jsonData.json();
         for (let entry of jsonDataBody) {
           this.pet = this.pet + entry[4] * 0.33;
         };
-        this.pet = this.pet * this.global.days;
+        this.pet = this.pet * this.days;
       },
       // The 2nd callback handles errors.
       (err) => console.error(err),
@@ -108,9 +114,7 @@ export class FoodComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.cal_need();
-
+  init_chart() {
     this.total = 0;
     this.background = [];
     this.background.push("#e1e1e1");
@@ -211,6 +215,31 @@ export class FoodComponent implements OnInit {
       // The 3rd callback handles the "complete" event.
       () => console.log("observable complete")
     );
+  }
+
+  getBasic() {
+    const lsid = localStorage.getItem('id');
+    this.basic.get(lsid).subscribe(
+      (jsonData) => {
+        console.log(jsonData);
+        const jsonDataBody = jsonData.json();
+        if (jsonDataBody.length !== 0) {
+          this.days = jsonDataBody[0][2];
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => {
+        console.log("observable complete");
+        this.cal_need();
+        this.init_chart();
+      }
+    );
+  }
+
+  ngOnInit() {
+    this.getBasic();
   }
 
 }

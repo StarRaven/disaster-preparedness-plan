@@ -8,6 +8,8 @@ import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
 import { Human } from '../../human';
 import { Pet } from '../../pet';
+import { HumanService } from '../../services/human.service';
+import { PetService } from '../../services/pet.service';
 
 @Component({
   selector: 'app-family',
@@ -26,6 +28,8 @@ export class FamilyComponent implements OnInit {
     public global: GlobalService,
     private http: Http,
     public dialog: MatDialog,
+    private humanS: HumanService,
+    private petS: PetService
   ) {
     this.add_family_member = new FormGroup({
       kind: new FormControl(null, [Validators.required]),
@@ -279,9 +283,8 @@ export class FamilyComponent implements OnInit {
   }
 
   getAllMembers() {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-
-    this.http.get('/api/get/human', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.humanS.get(lsid).subscribe(
       (jsonData) => {
         this.humans = [];
         let jsonDataBody = jsonData.json();
@@ -305,7 +308,7 @@ export class FamilyComponent implements OnInit {
       () => console.log("observable complete")
     );
 
-    this.http.get('/api/get/pet', { headers: headers }).subscribe(
+    this.petS.get(lsid).subscribe(
       (jsonData) => {
         this.pets = [];
         let jsonDataBody = jsonData.json();

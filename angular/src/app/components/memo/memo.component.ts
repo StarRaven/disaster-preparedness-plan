@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { GlobalService } from '../../global.service';
 import { ProtectdlgComponent } from '../protectdlg/protectdlg.component';
 import { UpdatememoComponent } from '../updatememo/updatememo.component';
+import { MemoService } from '../../services/memo.service';
 
 @Component({
   selector: 'app-memo',
@@ -18,6 +19,7 @@ export class MemoComponent implements OnInit {
     private http: Http,
     private global: GlobalService,
     public dialog: MatDialog,
+    private memoS: MemoService
   ) { }
 
   delete(memo) {
@@ -46,7 +48,7 @@ export class MemoComponent implements OnInit {
     });
   }
 
-  update(memo){
+  update(memo) {
     let dialogRef = this.dialog.open(UpdatememoComponent, {
       width: '529px',
       data: memo
@@ -59,8 +61,8 @@ export class MemoComponent implements OnInit {
     });
   }
   getAllMemos() {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    this.http.get('/api/get/memo', { headers: headers }).subscribe(
+    const lsid = localStorage.getItem('id');
+    this.memoS.get(lsid).subscribe(
       (jsonData) => {
         this.memos = [];
         let jsonDataBody = jsonData.json();

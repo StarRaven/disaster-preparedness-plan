@@ -23,7 +23,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  cursor: pointer;
+  overflow: auto;
 }
 
 .sidebar-nav {
@@ -35,6 +35,7 @@
   height: 60px;
   text-align: center;
   display: block;
+  cursor: pointer;
 }
 
 .nav-text {
