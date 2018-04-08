@@ -159,7 +159,7 @@ export class PrintComponent implements OnInit {
         console.log(jsonData);
         const jsonDataBody = jsonData.json();
         this.location = jsonDataBody[0][1],
-        this.days = jsonDataBody[0][2];
+          this.days = jsonDataBody[0][2];
         this.url = "https://www.google.com/maps/embed/v1/search?q=" + this.location.replace(/ /g, "%20") + "%20hospital&key=AIzaSyCEtY2--C0BdVOvD7Lra_SuIc3rXoDPKoQ&language=en";
         this.trusturl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
       },
@@ -322,7 +322,16 @@ export class PrintComponent implements OnInit {
   print() {
     //window.scroll({ top: 2500, left: 0, behavior: 'smooth' });
     //setTimeout(() => { window.print(); }, 3000);
-    document.querySelector('.map').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => { window.print(); }, 3000);
+    //document.querySelector('.map').scrollIntoView({ behavior: 'smooth' });
+    //setTimeout(() => { window.print(); }, 3000);
+    window.print();
+  }
+
+  up() {
+    window.scrollBy(0, -200);
+  }
+  
+  down() {
+    window.scrollBy(0, 200);
   }
 }

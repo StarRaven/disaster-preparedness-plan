@@ -319,7 +319,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100px;
   height: 50px;
   text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .mat-select-content, .mat-select-panel-done-animating {

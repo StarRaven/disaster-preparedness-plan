@@ -7,7 +7,7 @@
 }
 
 .inner-print {
-  padding: 50px;
+  padding: 5%;
 }
 
 table {
@@ -25,7 +25,7 @@ table {
 table,
 th,
 td {
-  padding-left: 30px;
+  padding-left: 4%;
   color: #8B2E00;
 
   line-height: 2.0em;
@@ -58,7 +58,10 @@ td:hover {
     text-align: center;
 }
 
-.print-button {
+.side-button {
+  width: 48px;
+  height: 48px;
+  display: block;
     cursor: pointer;
     font-size: 48px;
 }
@@ -69,4 +72,10 @@ td:hover {
     {
         display: none !important;
     }
+}
+
+.side-tool {
+  position: fixed;
+  right: 0;
+  top: 50%;
 }

@@ -1,8 +1,9 @@
 <div class="text">
   <br />
-<div class="center">
-  <i class="material-icons print-button" (click)='print()' matTooltip="Print the page. (It may take 5 seconds)">print</i>
-</div>
+  <div class="label l9 toggle" [ngClass]="{'nottoggled': !show[8]}" (click)='toggle(8)'>Emergency Authorities</div>
+  <div *ngIf="show[8]" class="inner-print">
+    <iframe class="map" width="100%" height="600px" frameborder="0" style="border:0" [src]=trusturl allowfullscreen></iframe>
+  </div>
   <div class="label l2 toggle" [ngClass]="{'nottoggled': !show[1]}" (click)='toggle(1)'>Basic Information</div>
   <div *ngIf="show[1]" class="inner-print">
     <table style="width:100%">
@@ -130,10 +131,7 @@
       </tr>
     </table>
   </div>
-  <div class="label l9 toggle" [ngClass]="{'nottoggled': !show[8]}" (click)='toggle(8)'>Emergency Authorities</div>
-  <div *ngIf="show[8]" class="inner-print">
-    <iframe class="map" width="100%" height="600px" frameborder="0" style="border:0" [src]=trusturl allowfullscreen></iframe>
-  </div>
+  
   <div class="label l10 toggle" [ngClass]="{'nottoggled': !show[9]}" (click)='toggle(9)'>Communication</div>
   <div *ngIf="show[9]" class="inner-print">
     <table style="width:100%">
@@ -319,9 +317,10 @@
     </table>
   </div>
   <br />
-  <div class="center">
-      <i class="material-icons print-button" (click)='print()' matTooltip="Print the page. (It may take 5 seconds)">print</i>
-    </div>
   <br />
-  <br />
+  <div class="side-tool">
+      <mat-icon class="side-button" (click)='up()'>keyboard_arrow_up</mat-icon>
+      <mat-icon class="side-button" (click)='print()' matTooltip="Print the page.">print</mat-icon>
+        <mat-icon class="side-button" (click)='down()'>keyboard_arrow_down</mat-icon>
+      </div>
 </div>
