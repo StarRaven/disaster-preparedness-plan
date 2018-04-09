@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @font-face {
   font-family: Lato-Regular;
-  src: url('/assets/fonts/Lato/Lato-Regular.ttf'); 
+  src: url('/assets/fonts/Lato/Lato-Regular.ttf');
 }
 
 body {
   margin: 0 !important;
-  font-family: Lato-Regular,Roboto,"Helvetica Neue",sans-serif;
+  font-family: Lato-Regular, Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-radio-button {
-  font-family: Lato-Regular,Roboto,"Helvetica Neue",sans-serif;
+  font-family: Lato-Regular, Roboto, "Helvetica Neue", sans-serif;
 }
+
 .mat-sidenav {
   background: #1d1c1c !important;
 }
@@ -20,6 +24,7 @@ body {
 .mat-table {
   background: transparent;
 }
+
 .mat-row {
   border-bottom-color: transparent;
 }
@@ -89,9 +94,10 @@ body {
   border: none;
   background: none;
   color: white;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.5), -1px -1px 1px rgba(255,255,255,.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5), -1px -1px 1px rgba(255, 255, 255, .5);
   font-size: 25px;
 }
+
 .right-title {
   padding-top: 20px;
   color: #8B2E00;
@@ -107,7 +113,7 @@ button {
 }
 
 .mat-form-field-wrapper {
-  margin-right:0 10px;
+  margin-right: 0 10px;
 }
 
 .mat-form-field-placeholder {
@@ -150,15 +156,17 @@ button {
   border-color: #8B2E00;
 }
 
-.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
   background-color: #8B2E00;
 }
 
 .mat-hint {
   color: red;
 }
+
 .mat-checkbox-checkmark-path {
-  stroke: #ffffff!important; 
+  stroke: #ffffff !important;
 }
 
 .below-operations {
@@ -177,6 +185,7 @@ button {
   border: none;
   color: #8B2E00;
   font-size: 16px;
+  text-align: center;
 }
 
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
@@ -211,7 +220,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .wrapper {
-  padding:10px;
+  padding: 10px;
 }
 
 .left-wrapper {
@@ -221,23 +230,21 @@ input[type=number]::-webkit-outer-spin-button {
 .right-wrapper {
   border-left: 1px solid #8B2E00;
   padding-left: 40px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
 }
 
 .brown-text-button {
   color: #8B2E00;
   vertical-align: middle;
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
+
 .label {
   margin-top: 20px;
   padding: 14px;
-    width: 230px;
-    color: white;
-    font-size: 19px;
-    background-repeat: no-repeat;
+  width: 230px;
+  color: white;
+  font-size: 19px;
+  background-repeat: no-repeat;
   background-size: 230px 50px;
   text-shadow: black 1px 1px 2px;
 }
@@ -298,8 +305,8 @@ input[type=number]::-webkit-outer-spin-button {
   height: 50px;
   border: none;
   margin-right: 13px;
-  color: #8B2E00;
-  text-shadow: -1px -1px 1px rgba(0,0,0,.5), 1px 1px 1px rgba(255,255,255,.5);
+  color: #dfccb8;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, .5), 1px 1px 1px rgba(255, 255, 255, .5);
   font-size: 20px;
 }
 
@@ -307,7 +314,7 @@ input[type=number]::-webkit-outer-spin-button {
   background: url("/assets/images/bt2-2.png");
   background-repeat: no-repeat;
   background-size: 100px 50px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.5), -1px -1px 1px rgba(255,255,255,.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5), -1px -1px 1px rgba(255, 255, 255, .5);
   width: 100px;
   height: 50px;
 }
@@ -318,11 +325,13 @@ input[type=number]::-webkit-outer-spin-button {
   background-size: 100px 50px;
   width: 100px;
   height: 50px;
-  text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
+  color: #676767;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
 
-.mat-select-content, .mat-select-panel-done-animating {
+.mat-select-content,
+.mat-select-panel-done-animating {
   background: #4c1600;
 }
 
@@ -338,12 +347,43 @@ input[type=number]::-webkit-outer-spin-button {
 .half {
   width: 45%;
   padding-right: 4%;
-  margin:15px 0;
+  margin: 15px 0;
 }
 
 .whole {
   width: 45%;
   padding-right: 4%;
   display: block;
-  margin:15px 0;
+  margin: 15px 0;
+}
+
+@media print {
+  .nottoggled,
+  .nottoggled * {
+    display: none !important;
+  }
+}
+
+/*定义滚动条整体宽高及背景*/
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+  background-color: transparent;
+}
+
+/*定义滚动条的轨道,内阴影及圆角*/
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+/*定义滑块,内阴影及圆角*/
+
+::-webkit-scrollbar-thumb {
+  height: 20px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #EBD8C7;
 }

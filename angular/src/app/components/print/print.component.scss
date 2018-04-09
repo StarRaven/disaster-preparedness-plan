@@ -27,22 +27,20 @@ th,
 td {
   padding-left: 4%;
   color: #8B2E00;
-
   line-height: 2.0em;
 }
 
 th {
-    font-size: 18px;
+  font-size: 18px;
   color: #fff;
-
   background-color: #8B2E00;
   text-align: left;
 }
 
 td {
-    font-size: 15px;
-    color: #5B1C00;
-    border-top: solid 1px #E3C781;
+  font-size: 15px;
+  color: #5B1C00;
+  border-top: solid 1px #E3C781;
 }
 
 td:hover {
@@ -55,27 +53,26 @@ td:hover {
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .side-button {
   width: 48px;
   height: 48px;
-  display: block;
-    cursor: pointer;
-    font-size: 48px;
-}
-
-@media print
-{    
-    .nottoggled, .nottoggled *
-    {
-        display: none !important;
-    }
+  cursor: pointer;
+  font-size: 48px;
 }
 
 .side-tool {
   position: fixed;
   right: 0;
   top: 50%;
+  width: 50px;
+}
+
+@media print {
+  .nottoggled,
+  .nottoggled * {
+    display: none !important;
+  }
 }

@@ -31,3 +31,9 @@
   height: 400px;
   top: 100px;
 }
+
+.stick {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}

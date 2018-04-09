@@ -39,8 +39,8 @@
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container fxHide.gt-md fxShow>
-  <mat-sidenav #sidenav mode="over">
+<mat-sidenav-container >
+  <mat-sidenav #sidenav mode="over" fxHide.gt-md fxShow>
     <div class="sidebar" fxFlex="none">
       <div class="sidebar-nav" routerLink="/info/basic" routerLinkActive="active">
         <a class="nav-text">Basic Information</a>
@@ -144,7 +144,7 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
+<!--
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0" fxLayoutGap.xs="0">
   <div class="sidebar" fxFlex="none" fxHide fxShow.gt-md>
     <div class="sidebar-nav" routerLink="/info/basic" routerLinkActive="active">
@@ -205,4 +205,4 @@
     </main>
   </div>
 </div>
-
+-->
